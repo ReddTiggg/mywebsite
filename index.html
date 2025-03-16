@@ -29,6 +29,41 @@
             line-height: 1.6;
         }
         
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
         /* Navigation */
         nav {
             position: fixed;
@@ -66,6 +101,18 @@
         }
         
         /* Terminal styling */
+        .terminal-container {
+            background-color: rgba(30, 30, 30, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            width: 90%;
+            margin: 80px auto;
+            overflow: hidden;
+            z-index: 1;
+            position: relative;
+        }
+        
         .terminal-header {
             background-color: var(--primary-dark);
             color: white;
@@ -91,18 +138,6 @@
         .yellow { background-color: #FFBD2E; }
         .green { background-color: #27C93F; }
         
-        .terminal-container {
-            background-color: rgba(30, 30, 30, 0.95);
-            border-radius: 10px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            max-width: 900px;
-            width: 90%;
-            margin: 80px auto;
-            overflow: hidden;
-            z-index: 1;
-            position: relative;
-        }
-        
         .terminal-content {
             padding: 30px;
             font-family: 'Fira Code', 'Courier New', monospace;
@@ -125,7 +160,22 @@
             color: #CCC;
         }
         
-        /* Main scroll indicator - UPDATED */
+        /* Cursor animation */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: var(--primary-light);
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Scroll indicator */
         .main-scroll-indicator {
             position: fixed;
             bottom: 50px;
@@ -140,6 +190,7 @@
             align-items: center;
             animation: bounce 2s infinite;
             z-index: 100;
+            transition: opacity 0.3s ease, pointer-events 0.3s ease;
         }
 
         .main-scroll-indicator-arrow {
@@ -193,38 +244,6 @@
         .section {
             margin: 100px 0;
             padding: 0 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h1, h2, h3 {
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(90deg, var(--primary), transparent);
-        }
-        
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
         }
         
         /* Grid and cards */
@@ -285,65 +304,6 @@
             border-radius: 5px;
             width: 0;
             transition: width 1s ease-in-out;
-        }
-        
-        /* Projects section */
-        .projects {
-            background-color: rgba(30, 30, 30, 0.9);
-            padding: 80px 0;
-        }
-        
-        .project-card {
-            background-color: #222;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .project-info {
-            padding: 25px;
-        }
-        
-        .project-info h3 {
-            color: var(--primary-light);
-            margin-bottom: 15px;
-        }
-        
-        .project-img {
-            height: 200px;
-            background-color: #333;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover .project-img img {
-            transform: scale(1.05);
-        }
-        
-        .tag {
-            display: inline-block;
-            background-color: rgba(65, 105, 225, 0.2);
-            color: var(--accent);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-        
-        .tags {
-            margin-top: 15px;
         }
         
         /* Button styling */
@@ -425,20 +385,6 @@
         }
         
         /* Animations */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background-color: var(--primary-light);
-            margin-left: 5px;
-            animation: blink 1s step-end infinite;
-        }
-        
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -522,7 +468,6 @@
         </div>
     </section>
 
-    <!-- Updated scroll indicator - now larger and properly centered -->
     <div class="main-scroll-indicator">
         <span>Scroll to explore</span>
         <div class="main-scroll-indicator-arrow">▼</div>
@@ -621,60 +566,6 @@
         </div>
     </section>
 
-    <section class="projects">
-        <div class="container fade-in">
-            <h2>Projects & Explorations</h2>
-            <p>Here are some of my key projects and technical explorations:</p>
-            
-            <div class="grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/200" alt="Network security project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Network Security Analysis</h3>
-                        <p>Comprehensive security audit toolkit for identifying and mitigating network vulnerabilities through automated scanning and reporting.</p>
-                        <div class="tags">
-                            <span class="tag">Security</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Networking</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/200" alt="Ethical hacking">
-                    </div>
-                    <div class="project-info">
-                        <h3>Penetration Testing Lab</h3>
-                        <p>A virtualized environment with intentionally vulnerable systems for practicing ethical hacking techniques and developing security skills.</p>
-                        <div class="tags">
-                            <span class="tag">Ethical Hacking</span>
-                            <span class="tag">Virtualization</span>
-                            <span class="tag">Security</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/200" alt="Python automation">
-                    </div>
-                    <div class="project-info">
-                        <h3>Security Automation Tools</h3>
-                        <p>Collection of Python scripts for automating routine security tasks, log analysis, and threat detection across networked systems.</p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Automation</span>
-                            <span class="tag">Security</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section">
         <div class="container fade-in">
             <h2>Get In Touch</h2>
@@ -710,7 +601,6 @@
     </footer>
 
     <script>
-        // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Animate skill bars
             const skillBars = document.querySelectorAll('.skill-progress');
@@ -739,17 +629,19 @@
             
             // Navbar scroll effect
             const navbar = document.getElementById('navbar');
+            
+            // Hide main scroll indicator when scrolling down
+            const mainScrollIndicator = document.querySelector('.main-scroll-indicator');
+            
             window.addEventListener('scroll', () => {
+                // Handle navbar
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
-            });
-            
-            // Hide main scroll indicator when scrolling down
-            const mainScrollIndicator = document.querySelector('.main-scroll-indicator');
-            window.addEventListener('scroll', () => {
+                
+                // Handle scroll indicator
                 if (window.scrollY > 100) {
                     mainScrollIndicator.style.opacity = '0';
                     mainScrollIndicator.style.pointerEvents = 'none';
