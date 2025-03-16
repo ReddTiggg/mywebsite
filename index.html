@@ -13,6 +13,7 @@
             --dark: #1A1A1A;
             --light: #F5F5F5;
             --accent: #4169E1;
+            --section-spacing: 80px;
         }
         
         /* Base styles with modern CSS reset */
@@ -176,7 +177,7 @@
         }
         
         /* Scroll indicator */
-        .main-scroll-indicator {
+        .scroll-indicator {
             position: fixed;
             bottom: 50px;
             left: 50%;
@@ -193,7 +194,7 @@
             transition: opacity 0.3s ease, pointer-events 0.3s ease;
         }
 
-        .main-scroll-indicator-arrow {
+        .scroll-indicator-arrow {
             margin-top: 10px;
             font-size: 2rem;
             color: var(--primary-light);
@@ -242,7 +243,7 @@
         
         /* Section styling */
         .section {
-            margin: 100px 0;
+            margin: var(--section-spacing) 0;
             padding: 0 20px;
         }
         
@@ -407,14 +408,14 @@
             }
             
             .section {
-                margin: 70px 0;
+                margin: 50px 0;
             }
             
-            .main-scroll-indicator {
+            .scroll-indicator {
                 font-size: 1rem;
             }
             
-            .main-scroll-indicator-arrow {
+            .scroll-indicator-arrow {
                 font-size: 1.6rem;
             }
         }
@@ -468,9 +469,9 @@
         </div>
     </section>
 
-    <div class="main-scroll-indicator">
+    <div class="scroll-indicator">
         <span>Scroll to explore</span>
-        <div class="main-scroll-indicator-arrow">▼</div>
+        <div class="scroll-indicator-arrow">▼</div>
     </div>
 
     <section class="section">
@@ -593,7 +594,7 @@
         <div class="container">
             <div class="social-links">
                 <a href="#" class="social-icon">
-                    <!-- Social icons would go here -->
+                    <!-- Social icon placeholder -->
                 </a>
             </div>
             <p>&copy; 2025 Red's Tech Fortress | Cybersecurity & Networking</p>
@@ -602,19 +603,26 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate skill bars
+            // Initialize animations and interactive elements
+            initializeSkillBars();
+            initializeFadeEffects();
+            initializeScrollEffects();
+        });
+        
+        // Animate skill bars on page load
+        function initializeSkillBars() {
             const skillBars = document.querySelectorAll('.skill-progress');
             skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = 0;
                 setTimeout(() => {
-                    const width = bar.style.width;
-                    bar.style.width = 0;
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
+                    bar.style.width = width;
                 }, 500);
             });
-            
-            // Fade in elements when scrolled into view
+        }
+        
+        // Handle fade-in animations when scrolling
+        function initializeFadeEffects() {
             const fadeElements = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -626,31 +634,31 @@
             }, { threshold: 0.1 });
             
             fadeElements.forEach(el => observer.observe(el));
-            
-            // Navbar scroll effect
+        }
+        
+        // Handle scroll-based UI changes
+        function initializeScrollEffects() {
             const navbar = document.getElementById('navbar');
-            
-            // Hide main scroll indicator when scrolling down
-            const mainScrollIndicator = document.querySelector('.main-scroll-indicator');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
             
             window.addEventListener('scroll', () => {
-                // Handle navbar
+                // Navbar effects
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
                 
-                // Handle scroll indicator
+                // Scroll indicator visibility
                 if (window.scrollY > 100) {
-                    mainScrollIndicator.style.opacity = '0';
-                    mainScrollIndicator.style.pointerEvents = 'none';
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.pointerEvents = 'none';
                 } else {
-                    mainScrollIndicator.style.opacity = '0.9';
-                    mainScrollIndicator.style.pointerEvents = 'auto';
+                    scrollIndicator.style.opacity = '0.9';
+                    scrollIndicator.style.pointerEvents = 'auto';
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
