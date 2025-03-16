@@ -14,10 +14,8 @@
             background: linear-gradient(135deg, #8B0000, #FF0000);
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
         }
         .background-overlay {
             position: absolute;
@@ -25,44 +23,51 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(20px);
         }
         .container {
             background: rgba(255, 255, 255, 0.98);
-            padding: 60px;
+            padding: 80px;
             border-radius: 25px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            max-width: 750px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
             width: 90%;
             z-index: 1;
             position: relative;
+            margin-top: 50px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         h1 {
             color: #222;
-            font-size: 36px;
+            font-size: 48px;
             margin-bottom: 20px;
         }
         p {
-            font-size: 22px;
+            font-size: 24px;
             color: #444;
             margin: 20px 0;
         }
-        .emoji {
-            font-size: 26px;
-        }
         .nav {
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
             z-index: 2;
         }
         .nav a {
-            margin: 0 20px;
+            margin: 0 25px;
             text-decoration: none;
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             transition: 0.3s;
         }
@@ -70,11 +75,29 @@
             text-decoration: underline;
             color: #FFD700;
         }
+        .section {
+            margin-top: 100px;
+        }
         img {
             max-width: 100%;
             border-radius: 15px;
-            margin-top: 20px;
+            margin-top: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .contact {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            width: 90%;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 18px;
+            color: white;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -83,18 +106,34 @@
     <div class="nav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </div>
-    <div class="container" id="home">
+    <div class="container section" id="home">
         <h1>Hello, I'm Red!</h1>
-        <p>I'm passionate about Linux, cybersecurity, and networking. Constantly learning and expanding my knowledge in the tech world. 🖥️</p>
-        <p><strong>Currently working on:</strong> Linux 🐧, Networking 🌐, Cybersecurity 🔐, and earning my CCNA certification!</p>
+        <p>I'm passionate about Linux, cybersecurity, and networking. Always exploring and pushing my skills further in the tech world. 🖥️</p>
+        <p><strong>Currently working on:</strong> Linux 🐧, Networking 🌐, Cybersecurity 🔐, and preparing for my CCNA certification!</p>
     </div>
-    <div class="container" id="about">
+    <div class="container section" id="about">
         <h1>About Me</h1>
-        <p>I'm an aspiring cybersecurity and networking professional with a deep interest in Linux, ethical hacking, and system administration. I enjoy exploring different technologies, setting up secure systems, and constantly improving my skills in networking protocols.</p>
-        <img src="https://source.unsplash.com/750x450/?technology,cybersecurity" alt="Tech workspace">
-        <p>Beyond tech, I like problem-solving, automation, and testing security vulnerabilities in ethical ways. My goal is to dive deeper into cybersecurity and networking, pushing my expertise to the next level. 💻</p>
+        <p>As an aspiring cybersecurity and networking specialist, I love diving deep into Linux, ethical hacking, and system security. I enjoy working with networks, analyzing security risks, and finding ways to strengthen systems against threats.</p>
+        <img src="https://source.unsplash.com/900x500/?technology,cybersecurity" alt="Tech workspace">
+        <p>My interests lie in ethical hacking, penetration testing, and securing digital environments. The world of cybersecurity is vast, and I aim to master every challenge it presents. 💻</p>
     </div>
+    <div class="container section" id="projects">
+        <h1>Projects</h1>
+        <p>Here are some of the things I've worked on:</p>
+        <ul>
+            <li>Network security auditing and testing</li>
+            <li>Linux server setup and administration</li>
+            <li>Cybersecurity research and ethical hacking simulations</li>
+            <li>Automating security processes with Python</li>
+        </ul>
+    </div>
+    <div class="contact section" id="contact">
+        <h1>Contact</h1>
+        <p>Want to connect? Reach out, and let's talk about tech, security, or anything exciting in the world of networking!</p>
+    </div>
+    <div class="footer">&copy; 2025 Red | Cybersecurity & Networking Enthusiast</div>
 </body>
 </html>
