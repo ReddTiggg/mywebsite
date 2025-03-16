@@ -6,15 +6,17 @@
     <title>About Red</title>
     <style>
         body {
+    position: relative;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-            background: rgba(255, 0, 0, 0.8);
+            background: red;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+    overflow: hidden;
             backdrop-filter: blur(20px);
         }
         .container {
@@ -46,5 +48,6 @@
         <p>I'm a coffee addict and love being a barista ☕</p>
         <p><strong>Working on:</strong> Linux 🐧, Networking 🌐, and eventually earning my CCNA!</p>
     </div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px);"></div>
 </body>
 </html>
