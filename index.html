@@ -100,6 +100,7 @@
             margin: 80px auto;
             overflow: hidden;
             z-index: 1;
+            position: relative;
         }
         
         .terminal-content {
@@ -122,6 +123,34 @@
             padding-left: 25px;
             margin-bottom: 25px;
             color: #CCC;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--light);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator-arrow {
+            margin-top: 5px;
+            font-size: 1.2rem;
+            color: var(--primary-light);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
         
         /* Hero section */
@@ -481,6 +510,10 @@
                     <span class="cursor"></span>
                 </div>
             </div>
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-indicator-arrow">▼</div>
+            </div>
         </div>
     </section>
 
@@ -594,21 +627,6 @@
                             <span class="tag">Security</span>
                             <span class="tag">Python</span>
                             <span class="tag">Networking</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/400/200" alt="Linux administration">
-                    </div>
-                    <div class="project-info">
-                        <h3>Linux Hardening Framework</h3>
-                        <p>Custom bash scripts and configuration files for automating the hardening process of Linux servers according to CIS benchmarks.</p>
-                        <div class="tags">
-                            <span class="tag">Linux</span>
-                            <span class="tag">Bash</span>
-                            <span class="tag">Security</span>
                         </div>
                     </div>
                 </div>
