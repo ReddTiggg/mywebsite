@@ -161,6 +161,42 @@
             color: #CCC;
         }
         
+        /* Dropdown styling */
+        .dropdown-item {
+            margin-bottom: 10px;
+        }
+        
+        .dropdown-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropdown-arrow {
+            display: inline-block;
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-header.active .dropdown-arrow {
+            transform: rotate(90deg);
+        }
+        
+        .dropdown-content {
+            padding-left: 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+        
+        .dropdown-content.active {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+        
         /* Cursor animation */
         .cursor {
             display: inline-block;
@@ -454,10 +490,41 @@
                     <span>cat current_focus.txt</span>
                 </div>
                 <div class="command-output">
-                    <p>> Linux Administration 🐧</p>
-                    <p>> Network Security 🌐</p>
-                    <p>> Ethical Hacking 🔐</p>
-                    <p>> CCNA Certification Prep 📚</p>
+                    <div class="dropdown-item">
+                        <p class="dropdown-header">
+                            <span class="dropdown-arrow">▶</span> Linux Administration 🐧
+                        </p>
+                        <div class="dropdown-content">
+                            <p>Mastering command line utilities, shell scripting, and system hardening techniques. Currently focused on containerization with Docker and orchestration with Kubernetes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown-item">
+                        <p class="dropdown-header">
+                            <span class="dropdown-arrow">▶</span> Network Security 🌐
+                        </p>
+                        <div class="dropdown-content">
+                            <p>Implementing secure network architectures, firewall configurations, and intrusion detection systems. Working with VPNs, proxies, and developing security policies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown-item">
+                        <p class="dropdown-header">
+                            <span class="dropdown-arrow">▶</span> Ethical Hacking 🔐
+                        </p>
+                        <div class="dropdown-content">
+                            <p>Conducting penetration tests, vulnerability assessments, and security audits. Using tools like Metasploit, Burp Suite, and Wireshark to identify and remediate security flaws.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown-item">
+                        <p class="dropdown-header">
+                            <span class="dropdown-arrow">▶</span> CCNA Certification Prep 📚
+                        </p>
+                        <div class="dropdown-content">
+                            <p>Studying network fundamentals, routing protocols, switching concepts, and infrastructure services. Practicing with Cisco Packet Tracer and building hands-on lab environments.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="command">
@@ -603,11 +670,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize dropdowns
+            initializeDropdowns();
+            
             // Initialize animations and interactive elements
             initializeSkillBars();
             initializeFadeEffects();
             initializeScrollEffects();
         });
+        
+        // Initialize dropdown functionality
+        function initializeDropdowns() {
+            const dropdownHeaders = document.querySelectorAll('.dropdown-header');
+            
+            dropdownHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Toggle active class on header
+                    this.classList.toggle('active');
+                    
+                    // Toggle active class on content
+                    const content = this.nextElementSibling;
+                    content.classList.toggle('active');
+                });
+            });
+        }
         
         // Animate skill bars on page load
         function initializeSkillBars() {
