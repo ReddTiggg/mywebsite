@@ -125,16 +125,16 @@
             color: #CCC;
         }
         
-        /* Main scroll indicator */
+        /* Main scroll indicator - UPDATED */
         .main-scroll-indicator {
             position: fixed;
-            bottom: 30px;
+            bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
             color: var(--light);
             text-align: center;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 1.2rem;
+            opacity: 0.9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -143,15 +143,15 @@
         }
 
         .main-scroll-indicator-arrow {
-            margin-top: 5px;
-            font-size: 1.2rem;
+            margin-top: 10px;
+            font-size: 2rem;
             color: var(--primary-light);
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
         }
         
         /* Hero section */
@@ -463,6 +463,14 @@
             .section {
                 margin: 70px 0;
             }
+            
+            .main-scroll-indicator {
+                font-size: 1rem;
+            }
+            
+            .main-scroll-indicator-arrow {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
@@ -514,6 +522,7 @@
         </div>
     </section>
 
+    <!-- Updated scroll indicator - now larger and properly centered -->
     <div class="main-scroll-indicator">
         <span>Scroll to explore</span>
         <div class="main-scroll-indicator-arrow">▼</div>
@@ -745,7 +754,7 @@
                     mainScrollIndicator.style.opacity = '0';
                     mainScrollIndicator.style.pointerEvents = 'none';
                 } else {
-                    mainScrollIndicator.style.opacity = '0.8';
+                    mainScrollIndicator.style.opacity = '0.9';
                     mainScrollIndicator.style.pointerEvents = 'auto';
                 }
             });
